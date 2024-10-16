@@ -1,11 +1,17 @@
 package com_bptn_quiz_app.controllers;
 
 import com.jfoenix.controls.JFXButton;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class SignupController {
 
@@ -34,17 +40,23 @@ public class SignupController {
     private PasswordField password;
 
     @FXML
+    private JFXButton homeButton;
+
+    @FXML
     private JFXButton signUpButton;
 
     @FXML
     void initialize() {
-        assert confirmPassword != null : "fx:id=\"confirmPassword\" was not injected: check your FXML file 'signup.fxml'.";
-        assert email != null : "fx:id=\"email\" was not injected: check your FXML file 'signup.fxml'.";
-        assert firstName != null : "fx:id=\"firstName\" was not injected: check your FXML file 'signup.fxml'.";
-        assert lastName != null : "fx:id=\"lastName\" was not injected: check your FXML file 'signup.fxml'.";
-        assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'signup.fxml'.";
-        assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'signup.fxml'.";
-        assert signUpButton != null : "fx:id=\"signUpButton\" was not injected: check your FXML file 'signup.fxml'.";
+
+
+        if    (signUpButton != null && homeButton != null)  {
+            HomeController homeController = new HomeController();
+            homeController.SetScreen(signUpButton, "/com_bptn_quiz_app/login.fxml","Login");
+            homeController.SetScreen(homeButton, "/com_bptn_quiz_app/home.fxml","Quiz App");
+        }
+
+
+
 
     }
 

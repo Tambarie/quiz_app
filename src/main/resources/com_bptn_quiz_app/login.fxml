@@ -9,14 +9,14 @@
    <children>
       <AnchorPane prefHeight="42.0" prefWidth="700.0" style="-fx-background-color: #f2fde4;">
          <children>
-            <JFXButton layoutX="478.0" layoutY="9.0" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: #008b00;" />
+            <JFXButton fx:id="homeButton" layoutX="53.0" layoutY="9.0" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #008b00;" text="Home" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="104.0" layoutY="42.0" prefHeight="308.0" prefWidth="470.0">
          <children>
-            <TextField layoutX="42.0" layoutY="80.0" prefHeight="30.0" prefWidth="386.0" promptText="Enter Email" />
-            <TextField layoutX="42.0" layoutY="128.0" prefHeight="30.0" prefWidth="386.0" promptText="Enter Password" />
-            <JFXButton layoutX="77.0" layoutY="181.0" prefHeight="26.0" prefWidth="302.0" style="-fx-background-color: #008b00;" text="Login" textFill="WHITE" />
+            <TextField fx:id="enterEmailField" layoutX="42.0" layoutY="80.0" prefHeight="30.0" prefWidth="386.0" promptText="Enter Email" />
+            <TextField fx:id="enterPasswordField" layoutX="42.0" layoutY="128.0" prefHeight="30.0" prefWidth="386.0" promptText="Enter Password" />
+            <JFXButton fx:id="loginButton" layoutX="77.0" layoutY="181.0" prefHeight="26.0" prefWidth="302.0" style="-fx-background-color: #008b00;" text="Login" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>
