@@ -10,6 +10,7 @@ module com.advaned_java.com_bptn_quiz_app {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires com.jfoenix;
 
     opens com_bptn_quiz_app to javafx.fxml;
     exports com_bptn_quiz_app;
