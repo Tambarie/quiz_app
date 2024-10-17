@@ -45,7 +45,7 @@ public class HomeController {
     // TODO: refactor this method to a static helper method
     public void SetScreen(JFXButton jfxButton, String url, String title) {
         jfxButton.setOnAction(event -> {
-            jfxButton.getScene().getWindow().hide();
+            jfxButton.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource(url));
 
@@ -59,7 +59,7 @@ public class HomeController {
             Stage stage = new Stage();
             stage.setTitle(title);
             stage.setScene(new Scene(root));
-            stage.show();
+            stage.showAndWait();
 
         });
     }

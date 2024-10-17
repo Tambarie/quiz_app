@@ -1,10 +1,16 @@
 package com_bptn_quiz_app.controllers;
 
-import com.jfoenix.controls.JFXButton;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+import com_bptn_quiz_app.database.DatabaseHandler;
+import com_bptn_quiz_app.interfaces.UserAuthentication;
+import com_bptn_quiz_app.models.SignUpUser;
+import com_bptn_quiz_app.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +19,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SignupController {
+public class SignupController  {
 
     @FXML
     private ResourceBundle resources;
@@ -46,18 +52,75 @@ public class SignupController {
     private JFXButton signUpButton;
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException, ClassNotFoundException {
 
 
-        if    (signUpButton != null && homeButton != null)  {
+        // TODO validate the user inputs
+        // TODO check for confirmation of password
+        // TODO Hash the password
+
+
+        signUpButton.setOnAction(event -> {
+
+            String userEmail = email.getText().trim();
+            String userFirstName = firstName.getText().trim();
+            String userLastName = lastName.getText().trim();
+            String userPassword = password.getText().trim();
+            String userConfirmPassword = confirmPassword.getText().trim();
+
+            System.out.println(userEmail + ":" + userFirstName + ":" + userFirstName);
+
+            if (userEmail.isEmpty() || userFirstName.isEmpty() || userLastName.isEmpty() || userPassword.isEmpty()) {
+                System.out.println("Please fill all the fields");
+            }
+
+
+            User user = new User( userFirstName, userLastName,userEmail, userPassword);
+
+            System.out.println(user);
+
+            UserAuthentication userAuthentication = null;
+            try {
+                userAuthentication = new DatabaseHandler();
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+            System.out.println(userAuthentication + "userAuthentication");
+
+
+            try {
+                String message = userAuthentication.signUpUser(user.getEmail(), user.getPassword(), user.getFirstName(), user.getLastName());
+                System.out.println(message);
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+
+                signUpButton.getScene().getWindow();
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/com_bptn_quiz_app/login.fxml"));
+
+                try {
+                    fxmlLoader.load();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+
+                Parent root = fxmlLoader.getRoot();
+                Stage stage = new Stage();
+                stage.setTitle("Login");
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
+            });
+
             HomeController homeController = new HomeController();
-            homeController.SetScreen(signUpButton, "/com_bptn_quiz_app/login.fxml","Login");
-            homeController.SetScreen(homeButton, "/com_bptn_quiz_app/home.fxml","Quiz App");
-        }
-
-
-
+              homeController.SetScreen(homeButton, "/com_bptn_quiz_app/home.fxml","Quiz App");
 
     }
+
 
 }

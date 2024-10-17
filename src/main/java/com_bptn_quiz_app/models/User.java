@@ -2,7 +2,9 @@ package com_bptn_quiz_app.models;
 
 import com_bptn_quiz_app.interfaces.UserAuthentication;
 
-public class User  {
+import java.sql.SQLException;
+
+public class User   {
     private  String firstName;
     private  String lastName;
     private  String email;
@@ -45,5 +47,15 @@ public class User  {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

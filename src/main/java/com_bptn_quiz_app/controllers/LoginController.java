@@ -33,9 +33,8 @@ public class LoginController {
     private JFXButton loginButton;
 
     @FXML
-    void initialize() {
-
-
+    void
+    initialize() {
         // TODO 1. Get the inputs, 2. Create a database 3. Refactor SetScreen method to a static method
 
         if    (loginButton != null && homeButton != null)  {

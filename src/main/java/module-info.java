@@ -11,6 +11,8 @@ module com.advaned_java.com_bptn_quiz_app {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires com.jfoenix;
+    requires java.sql;
+    requires mysql.connector.j;
 
     opens com_bptn_quiz_app to javafx.fxml;
     exports com_bptn_quiz_app;
