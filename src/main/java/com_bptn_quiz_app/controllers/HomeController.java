@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class HomeController {
@@ -27,9 +29,19 @@ public class HomeController {
     private JFXButton homeSignUpButton;
 
     @FXML
+    private ImageView displayPicture;
+
+    @FXML
+    private ImageView tdLogo;
+
+    @FXML
     void initialize() {
 
+        Image logo = new Image(getClass().getResource("/com_bptn_quiz_app/td-logo-en.png").toExternalForm());
+        tdLogo.setImage(logo);
 
+        Image image = new Image(getClass().getResource("/com_bptn_quiz_app/landing_page.jpg").toExternalForm());
+        displayPicture.setImage(image);
 
         if (homeLoginButton != null) {
 
