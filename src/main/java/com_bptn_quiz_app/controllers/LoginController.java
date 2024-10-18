@@ -40,7 +40,7 @@ public class LoginController {
     @FXML
     void
     initialize() {
-        // TODO 1. Get the inputs, 2. Create a database 3. Refactor SetScreen method to a static method
+
         if (homeButton != null) {
             HomeController homeController = new HomeController();
             homeController.SetScreen(homeButton, "/com_bptn_quiz_app/home.fxml", "Quiz App");
@@ -80,8 +80,6 @@ public class LoginController {
                 System.out.println("Login failed");
                 return;
             }
-
-            System.out.println("Login successful");
 
             loginButton.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader();

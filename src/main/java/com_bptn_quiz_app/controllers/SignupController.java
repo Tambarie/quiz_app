@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com_bptn_quiz_app.database.DatabaseHandler;
 import com_bptn_quiz_app.interfaces.UserAuthentication;
-import com_bptn_quiz_app.models.SignUpUser;
 import com_bptn_quiz_app.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

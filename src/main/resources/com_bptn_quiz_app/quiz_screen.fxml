@@ -1,11 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com_bptn_quiz_app.controllers.QuizScreenController">
    <children>
-      <AnchorPane prefHeight="42.0" prefWidth="700.0" />
-      <Label fx:id="title" layoutX="284.0" layoutY="94.0" text="Quiz Screem" />
+      <AnchorPane prefHeight="42.0" prefWidth="700.0">
+         <children>
+            <AnchorPane layoutY="3.0" prefHeight="42.0" prefWidth="700.0" style="-fx-background-color: #f2fde4;" />
+         </children></AnchorPane>
+      <Label fx:id="title" layoutX="297.0" layoutY="56.0" prefHeight="18.0" prefWidth="82.0" text="Yes you can!!!" />
+      <AnchorPane blendMode="SRC_ATOP" layoutX="63.0" layoutY="74.0" prefHeight="317.0" prefWidth="574.0" style="-fx-background-color: #008b00;">
+         <children>
+            <Label fx:id="question" centerShape="false" contentDisplay="CENTER" layoutX="32.0" layoutY="32.0" prefHeight="58.0" prefWidth="518.0" text="Which of the following is not a Java keyword?" textAlignment="RIGHT" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXRadioButton fx:id="a" layoutX="53.0" layoutY="137.0" text="class" textFill="WHITE" />
+            <JFXRadioButton fx:id="b" layoutX="53.0" layoutY="172.0" text="try" textFill="WHITE" />
+            <JFXRadioButton fx:id="c" layoutX="53.0" layoutY="207.0" text="if" textFill="WHITE" />
+            <JFXRadioButton fx:id="d" layoutX="53.0" layoutY="241.0" text="then" textFill="WHITE" />
+            <JFXButton fx:id="checkResult" layoutX="48.0" layoutY="277.0" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: F8FFDB;" text="Check It!" />
+            <JFXButton fx:id="nextQuestion" layoutX="465.0" layoutY="277.0" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: F8FFDB;" text="Next Question" />
+            <Label fx:id="questionNumber" layoutX="18.0" layoutY="14.0" text="1" textFill="WHITE" />
+            <Label fx:id="scoreText" layoutX="177.0" layoutY="77.0" prefHeight="94.0" prefWidth="220.0" text="Your score is 100%" textFill="WHITE" visible="false">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="submit" layoutX="244.0" layoutY="277.0" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: F8FFDB;" text="Submit" visible="false" />
+            <Label fx:id="correctAnswers" layoutX="512.0" layoutY="23.0" text="1" textFill="WHITE" visible="false" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <DropShadow radius="7.075" width="9.3" />
+         </effect>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -30,7 +30,7 @@ public class Const {
                   "c": "if",
                   "d": "then"
                 },
-                "correct_answer": "d"
+                "correct_answer": "then"
               },
               {
                 "question": "What is the default value of a boolean variable in Java?",
@@ -40,7 +40,7 @@ public class Const {
                   "c": "0",
                   "d": "null"
                 },
-                "correct_answer": "b"
+                "correct_answer": "false"
               },
               {
                 "question": "Which method must be implemented by a Java class to support multi-threading?",
@@ -50,7 +50,7 @@ public class Const {
                   "c": "execute()",
                   "d": "main()"
                 },
-                "correct_answer": "a"
+                "correct_answer": "run()"
               },
               {
                 "question": "What is the size of an int in Java?",
@@ -60,7 +60,7 @@ public class Const {
                   "c": "32 bits",
                   "d": "64 bits"
                 },
-                "correct_answer": "c"
+                "correct_answer": "8 bits"
               },
                 {
                   "question": "Which of the following is a wrapper class in Java?",
@@ -70,7 +70,7 @@ public class Const {
                     "c": "float",
                     "d": "Integer"
                   },
-                  "correct_answer": "d"
+                  "correct_answer": "Integer"
                 },
                 {
                   "question": "Which of the following is not a valid access modifier in Java?",
@@ -80,7 +80,7 @@ public class Const {
                     "c": "protected",
                     "d": "friendly"
                   },
-                  "correct_answer": "d"
+                  "correct_answer": "friendly"
                 },
                 {
                   "question": "What is the default value of a local variable in Java?",
@@ -90,7 +90,7 @@ public class Const {
                     "c": "false",
                     "d": "None of the above"
                   },
-                  "correct_answer": "d"
+                  "correct_answer": "None of the above"
                 },
                 {
                   "question": "Which of the following is used to define a constant in Java?",
@@ -100,7 +100,7 @@ public class Const {
                     "c": "final only",
                     "d": "static only"
                   },
-                  "correct_answer": "a"
+                  "correct_answer": "static final"
                 },
                 {
                   "question": "Which of the following is not a type of exception in Java?",
@@ -110,7 +110,7 @@ public class Const {
                     "c": "ClassNotFoundException",
                     "d": "NumberFormat"
                   },
-                  "correct_answer": "d"
+                  "correct_answer": "NumberFormat"
                 },
                 {
                   "question": "What is the return type of the hashCode() method in Java?",
@@ -120,8 +120,8 @@ public class Const {
                     "c": "boolean",
                     "d": "float"
                   },
-                  "correct_answer": "a"
-                },
+                  "correct_answer": "int"
+            },
                 {
                   "question": "Which of the following is a checked exception in Java?",
                   "options": {
@@ -130,7 +130,7 @@ public class Const {
                     "c": "ArithmeticException",
                     "d": "NullPointerException"
                   },
-                  "correct_answer": "b"
+                  "correct_answer": "IOException"
                 },
                 {
                   "question": "What does the 'super' keyword represent in Java?",
@@ -140,7 +140,7 @@ public class Const {
                     "c": "Method reference",
                     "d": "Static method"
                   },
-                  "correct_answer": "b"
+                  "correct_answer": "Parent class object"
                 },
                 {
                   "question": "Which package contains the 'String' class in Java?",
@@ -150,7 +150,7 @@ public class Const {
                     "c": "java.io",
                     "d": "java.text"
                   },
-                  "correct_answer": "a"
+                  "correct_answer": "java.lang"
                 },
                 {
                   "question": "Which of the following is a marker interface?",
@@ -160,7 +160,7 @@ public class Const {
                     "c": "Serializable",
                     "d": "Readable"
                   },
-                  "correct_answer": "c"
+                  "correct_answer": "Runnable"
                 },
                 {
                   "question": "Which of these is not a feature of Java?",
@@ -170,7 +170,7 @@ public class Const {
                     "c": "Manual memory management",
                     "d": "Multithreading"
                   },
-                  "correct_answer": "c"
+                  "correct_answer": "Manual memory management"
                 },
                 {
                   "question": "Which operator is used to compare two values in Java?",
@@ -180,7 +180,7 @@ public class Const {
                     "c": "!=",
                     "d": "equals()"
                   },
-                  "correct_answer": "b"
+                  "correct_answer": "=="
                 },
                 {
                   "question": "Which method is used to stop a thread in Java?",
@@ -190,7 +190,7 @@ public class Const {
                     "c": "terminate()",
                     "d": "interrupt()"
                   },
-                  "correct_answer": "d"
+                  "correct_answer": "interrupt()"
                 },
                 {
                   "question": "What is the output of 10 + 20 + \\"30\\" in Java?",
@@ -200,7 +200,7 @@ public class Const {
                     "c": "102030",
                     "d": "30"
                   },
-                  "correct_answer": "a"
+                  "correct_answer": "1030"
                 },
                 {
                   "question": "Which collection does not allow duplicates in Java?",
@@ -210,7 +210,7 @@ public class Const {
                     "c": "Queue",
                     "d": "Map"
                   },
-                  "correct_answer": "b"
+                  "correct_answer": "Set"
                 },
                 {
                   "question": "Which of the following methods is not defined in the Object class?",
@@ -220,7 +220,7 @@ public class Const {
                     "c": "clone()",
                     "d": "finalizeAll()"
                   },
-                  "correct_answer": "d"
+                  "correct_answer": "finalizeAll()"
                 }
               ]
             }
