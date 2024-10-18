@@ -99,7 +99,6 @@ public class SignupController  {
                 throw new RuntimeException(e);
             }
 
-
                 signUpButton.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com_bptn_quiz_app/login.fxml"));
@@ -118,7 +117,7 @@ public class SignupController  {
             });
 
             HomeController homeController = new HomeController();
-              homeController.SetScreen(homeButton, "/com_bptn_quiz_app/home.fxml","Quiz App");
+            homeController.SetScreen(homeButton, "/com_bptn_quiz_app/home.fxml","Quiz App");
 
     }
 

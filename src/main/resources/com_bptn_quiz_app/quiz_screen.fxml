@@ -3,10 +3,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com_bptn_quiz_app.controllers.QuizScreenController">
    <children>
       <AnchorPane prefHeight="42.0" prefWidth="700.0" />
-      <Label layoutX="284.0" layoutY="94.0" text="Quiz Screem" />
+      <Label fx:id="title" layoutX="284.0" layoutY="94.0" text="Quiz Screem" />
    </children>
 </AnchorPane>
