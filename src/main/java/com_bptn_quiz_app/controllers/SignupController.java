@@ -58,7 +58,7 @@ public class SignupController  {
         // TODO validate the user inputs
         // TODO check for confirmation of password
         // TODO Hash the password
-
+        // TODO check if password and confirm password are equal
 
         signUpButton.setOnAction(event -> {
 
@@ -68,16 +68,18 @@ public class SignupController  {
             String userPassword = password.getText().trim();
             String userConfirmPassword = confirmPassword.getText().trim();
 
-            System.out.println(userEmail + ":" + userFirstName + ":" + userFirstName);
+            if (!userConfirmPassword.equals(userPassword)){
+                System.out.println("Passwords mismatch");
+                return;
+            }
 
             if (userEmail.isEmpty() || userFirstName.isEmpty() || userLastName.isEmpty() || userPassword.isEmpty()) {
                 System.out.println("Please fill all the fields");
+                return;
             }
-
 
             User user = new User( userFirstName, userLastName,userEmail, userPassword);
 
-            System.out.println(user);
 
             UserAuthentication userAuthentication = null;
             try {
@@ -85,8 +87,6 @@ public class SignupController  {
             } catch (SQLException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
-
-            System.out.println(userAuthentication + "userAuthentication");
 
 
             try {
