@@ -7,6 +7,7 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DatabaseHandler implements UserAuthentication {
@@ -20,8 +21,21 @@ public class DatabaseHandler implements UserAuthentication {
 
 
     @Override
-    public String loginUser(String email, String password) {
-        return "";
+    public ResultSet getUser(String email, String password) {
+        ResultSet result = null;
+        String query = String.format("SELECT * FROM  %s WHERE %s = ? AND %s = ?",Const.USER_TABLE,Const.USER_EMAIL,Const.USER_PASSWORD);
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1,email);
+            ps.setString(2,password);
+            result = ps.executeQuery();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return result;
     }
 
     @Override
