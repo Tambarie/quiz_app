@@ -1,21 +1,28 @@
 package com_bptn_quiz_app.controllers;
 
 import com.google.gson.Gson;
-import com_bptn_quiz_app.interfaces.JsonDesirialiser;
+import com.google.gson.GsonBuilder;
+import com_bptn_quiz_app.interfaces.JsonDeserializer;
+import com_bptn_quiz_app.interfaces.JsonSirialiser;
 import com_bptn_quiz_app.models.JavaQuestion;
 import com_bptn_quiz_app.models.Questions;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
+import com_bptn_quiz_app.models.Score;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
+import org.jetbrains.annotations.NotNull;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Optional;
 import java.util.Random;
 
-import static com_bptn_quiz_app.constants.Const.QUESTIONS;
 
 public class QuizScreenController {
 
@@ -57,6 +64,8 @@ public class QuizScreenController {
     void initialize() {
         correctAnswers.setText("0");
         int counter = 1;
+
+
 
         a.setSelectedColor(Color.LIGHTGREEN);
         b.setSelectedColor(Color.LIGHTGREEN);
@@ -127,7 +136,8 @@ public class QuizScreenController {
         questionNumber.setVisible(false);
         scoreText.setVisible(true);
 
-        // TODO Set Student Score to the Database
+        //  Saves user score to JSON
+        saveUserScore(totalScore);
     }
 
     private void calculateScore(int correct) {
@@ -184,9 +194,8 @@ public class QuizScreenController {
 
 
     private void setNextQuestion( int counter) {
-        Gson gson = new Gson();
-        JsonDesirialiser questions = (QUESTIONS) -> gson.fromJson(QUESTIONS, Questions.class);
-        Questions jQuestions = questions.deserializes(QUESTIONS);
+        JsonDeserializer questions = getJsonDesirialiser();
+        Questions jQuestions = questions.deserializes();
         JavaQuestion javaQuestionBatch = getRandomQuestion(jQuestions);
 
         questionNumber.setText(String.valueOf(counter));
@@ -198,16 +207,43 @@ public class QuizScreenController {
     }
 
     private JavaQuestion getQuestions(String get) {
-        Gson gson = new Gson();
-        JsonDesirialiser questions = (QUESTIONS) -> gson.fromJson(QUESTIONS, Questions.class);
-        Questions jQuestions = questions.deserializes(QUESTIONS);
-
+        JsonDeserializer questions = getJsonDesirialiser();
+        Questions jQuestions = questions.deserializes();
         for (JavaQuestion javaQuestion : jQuestions.javaQuestions) {
             if (javaQuestion.getQuestion().equals(get)) {
                 return javaQuestion;
             }
         }
         return null;
+    }
+
+    @NotNull
+    private static JsonDeserializer getJsonDesirialiser() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return () -> {
+            try {
+                FileReader fileReader = new FileReader("src/main/java/com_bptn_quiz_app/assets/quiz.json");
+              return   gson.fromJson(fileReader, Questions.class);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+        };
+    }
+
+    private void saveUserScore (Double userSores){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        JsonSirialiser saveScoreToJSon = (score) -> {
+            try {
+                FileWriter writer = new FileWriter("src/main/java/com_bptn_quiz_app/assets/scores.json");
+                gson.toJson(score, writer);
+                writer.close();
+                System.out.println("Score saved");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        };
+        saveScoreToJSon.serializes(new Score(userSores,"user"));
     }
 }
 

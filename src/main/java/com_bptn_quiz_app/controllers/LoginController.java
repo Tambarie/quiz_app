@@ -96,7 +96,6 @@ public class LoginController {
             stage.setTitle("Quiz App");
             stage.setScene(new Scene(root));
             stage.show();
-
         });
 
     }
