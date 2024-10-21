@@ -14,8 +14,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class SignupController  {
@@ -51,13 +53,29 @@ public class SignupController  {
     private JFXButton signUpButton;
 
     @FXML
+    private Label enterValidPasswordError;
+
+    @FXML
+    private Label passwordLengthError;
+
+    @FXML
+    private Label passwordMismatchError;
+
+    @FXML
+    private Label fillAllFieldsError;
+
+    @FXML
+    void onKey(KeyEvent event) {
+
+    }
+
+    @FXML
     void initialize() throws SQLException, ClassNotFoundException {
 
-
-        // TODO validate the user inputs
-        // TODO check for confirmation of password
-        // TODO Hash the password
-        // TODO check if password and confirm password are equal
+        enterValidPasswordError.setVisible(false);
+        passwordLengthError.setVisible(false);
+        passwordMismatchError.setVisible(false);
+        fillAllFieldsError.setVisible(false);
 
         signUpButton.setOnAction(event -> {
 
@@ -67,18 +85,27 @@ public class SignupController  {
             String userPassword = password.getText().trim();
             String userConfirmPassword = confirmPassword.getText().trim();
 
-            if (!userConfirmPassword.equals(userPassword)){
-                System.out.println("Passwords mismatch");
+            if (userEmail.isEmpty() || userFirstName.isEmpty() || userLastName.isEmpty() || userPassword.isEmpty()) {
+                fillAllFieldsError.setVisible(true);
                 return;
             }
 
-            if (userEmail.isEmpty() || userFirstName.isEmpty() || userLastName.isEmpty() || userPassword.isEmpty()) {
-                System.out.println("Please fill all the fields");
+            if (!userConfirmPassword.equals(userPassword)){
+                passwordMismatchError.setVisible(true);
+                return;
+            }
+
+            if (!userEmail.contains("@")){
+                enterValidPasswordError.setVisible(true);
+                return;
+            }
+
+            if (userPassword.length() < 6){
+                passwordLengthError.setVisible(true);
                 return;
             }
 
             User user = new User( userFirstName, userLastName,userEmail, userPassword);
-
 
             UserAuthentication userAuthentication = null;
             try {
@@ -119,6 +146,8 @@ public class SignupController  {
             homeController.SetScreen(homeButton, "/com_bptn_quiz_app/home.fxml","Quiz App");
 
     }
+
+
 
 
 }

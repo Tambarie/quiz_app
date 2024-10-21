@@ -43,8 +43,8 @@ public class HomeController {
         Image image = new Image(getClass().getResource("/com_bptn_quiz_app/landing_page.jpg").toExternalForm());
         displayPicture.setImage(image);
 
-        if (homeLoginButton != null) {
 
+        if (homeLoginButton != null) {
             SetScreen(homeLoginButton, "/com_bptn_quiz_app/login.fxml","Login");
         }
 

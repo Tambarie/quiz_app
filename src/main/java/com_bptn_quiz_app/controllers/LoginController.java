@@ -14,7 +14,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class LoginController {
@@ -38,8 +41,30 @@ public class LoginController {
     private JFXButton loginButton;
 
     @FXML
+    private Label enterValidEmail;
+
+    @FXML
+    private Label incorrectEmailOrPassword;
+
+    @FXML
+    private Label emptyFieldsError;
+
+    @FXML
+    private ImageView emailPic;
+
+    @FXML
+    private ImageView passwordPics;
+
+    @FXML
     void
     initialize() {
+
+
+        enterValidEmail.setVisible(false);
+        emptyFieldsError.setVisible(false);
+        incorrectEmailOrPassword.setVisible(false);
+
+
 
         if (homeButton != null) {
             HomeController homeController = new HomeController();
@@ -51,12 +76,19 @@ public class LoginController {
             String email = enterEmailField.getText().trim();
             String password = enterPasswordField.getText().trim();
 
-
-            if (email.isEmpty() || password.isEmpty()) {
-                // TODO Return an error message to the user
-                System.out.println("Enter email or password");
+            if (!email.contains("@")){
+                enterValidEmail.setVisible(true);
                 return;
             }
+
+
+            if (email.isEmpty() || password.isEmpty()) {
+               emptyFieldsError.setVisible(true);
+                return;
+            }
+
+
+
 
             UserAuthentication userAuthentication = null;
             try {
@@ -77,7 +109,7 @@ public class LoginController {
             }
             if (counter != 1) {
                 // TODO send an error message to the user
-                System.out.println("Login failed");
+                incorrectEmailOrPassword.setVisible(true);
                 return;
             }
 

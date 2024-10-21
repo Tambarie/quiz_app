@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com_bptn_quiz_app.controllers.LoginController">
    <children>
@@ -17,6 +20,31 @@
             <TextField fx:id="enterEmailField" layoutX="42.0" layoutY="80.0" prefHeight="30.0" prefWidth="386.0" promptText="Enter Email" />
             <TextField fx:id="enterPasswordField" layoutX="42.0" layoutY="128.0" prefHeight="30.0" prefWidth="386.0" promptText="Enter Password" />
             <JFXButton fx:id="loginButton" layoutX="77.0" layoutY="181.0" prefHeight="26.0" prefWidth="302.0" style="-fx-background-color: #008b00;" text="Login" textFill="WHITE" />
+            <Label fx:id="incorrectEmailOrPassword" layoutX="273.0" layoutY="58.0" prefHeight="18.0" prefWidth="182.0" text="Incorrect email or password..." textFill="#f20000" visible="false" wrapText="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="enterValidEmail" layoutX="270.0" layoutY="58.0" prefHeight="18.0" prefWidth="182.0" text="please enter a valid email" textFill="#f20000" visible="false" wrapText="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="emptyFieldsError" layoutX="270.0" layoutY="160.0" prefHeight="18.0" prefWidth="182.0" text="fields cannot be empty" textFill="#f20000" visible="false" wrapText="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="emailPic" fitHeight="30.0" fitWidth="25.0" layoutX="11.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mail_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="passwordPics" fitHeight="30.0" fitWidth="36.0" layoutX="8.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@lock_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
