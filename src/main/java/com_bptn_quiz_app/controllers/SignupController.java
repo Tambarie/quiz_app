@@ -105,6 +105,8 @@ public class SignupController  {
                 return;
             }
 
+            // TODO check if user exists
+
             User user = new User( userFirstName, userLastName,userEmail, userPassword);
 
             UserAuthentication userAuthentication = null;

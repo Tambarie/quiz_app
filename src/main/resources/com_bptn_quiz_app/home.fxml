@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com_bptn_quiz_app.controllers.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com_bptn_quiz_app.controllers.HomeController">
    <children>
-      <AnchorPane layoutX="429.0" layoutY="41.0" prefHeight="262.0" prefWidth="271.0" style="-fx-background-color: #ffffff;" />
-      <ImageView fx:id="displayPicture" fitHeight="262.0" fitWidth="463.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="displayPicture" fitHeight="262.0" fitWidth="506.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../java/com_bptn_quiz_app/assets/never-stop-learning-3653430_1920.jpg" />
+            <Image url="@landing_page.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="-1.0" layoutY="304.0" prefHeight="97.0" prefWidth="700.0" style="-fx-background-color: #E0E0E0;" />
+      <AnchorPane layoutX="463.0" layoutY="42.0" prefHeight="262.0" prefWidth="237.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <AnchorPane layoutX="-39.0" prefHeight="147.0" prefWidth="277.0" style="-fx-background-color: green;">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="92.0" prefWidth="94.0" text="You are never alone" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="201.0" prefHeight="92.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" />
+               </children>
+            </AnchorPane>
+            <JFXButton defaultButton="true" layoutX="57.0" layoutY="159.0" mouseTransparent="true" prefHeight="61.0" prefWidth="167.0" style="-fx-background-color: #f2fde4;" text="Start Learning today..." textFill="#035124" />
+         </children></AnchorPane>
       <AnchorPane prefHeight="42.0" prefWidth="700.0" style="-fx-background-color: #f2fde4;">
          <children>
             <JFXButton fx:id="homeLoginButton" layoutX="476.0" layoutY="7.0" prefHeight="28.0" prefWidth="64.0" style="-fx-background-color: #008b00;" text="Login" textFill="WHITE" />
@@ -23,6 +37,27 @@
                   <Image url="@td-logo-en.png" />
                </image>
             </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-1.0" layoutY="303.0" prefHeight="98.0" prefWidth="700.0">
+         <children>
+            <Label layoutX="241.0" layoutY="24.0" prefHeight="20.0" prefWidth="183.0" text="Need to talk to us directly? " textFill="#04401f">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="435.0" layoutY="26.0" prefHeight="17.0" prefWidth="64.0" text="Contact us" textFill="#19903d" />
+            <ImageView fitHeight="20.0" fitWidth="19.0" layoutX="324.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@facebook.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="20.0" fitWidth="19.0" layoutX="293.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@twitter.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="198.0" layoutY="63.0" text="Follow TD" />
          </children>
       </AnchorPane>
    </children>

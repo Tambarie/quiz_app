@@ -58,7 +58,19 @@ public class QuizScreenController {
     private Label correctAnswers;
 
     @FXML
-    private Label title;
+    private JFXButton logout;
+
+    @FXML
+    private Label quizEnded;
+
+    @FXML
+    private JFXButton startNewQuiz;
+
+
+// TODO
+    // The question should be set to visible false at the end of the quiz
+    // The endquiz and logout button should only be visible at the end of the quiz
+
 
     @FXML
     void initialize() {
@@ -135,6 +147,7 @@ public class QuizScreenController {
         question.setVisible(false);
         questionNumber.setVisible(false);
         scoreText.setVisible(true);
+        quizEnded.setVisible(true);
 
         //  Saves user score to JSON
         saveUserScore(totalScore);
