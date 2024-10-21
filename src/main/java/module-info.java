@@ -10,11 +10,10 @@ module com.advaned_java.com_bptn_quiz_app {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
-    requires com.jfoenix;
-    requires mysql.connector.j;
-    requires com.google.gson;
     requires java.sql;
     requires annotations;
+    requires com.jfoenix;
+    requires com.google.gson;
 
 
     opens com_bptn_quiz_app to javafx.fxml;
