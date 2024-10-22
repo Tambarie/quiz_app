@@ -34,7 +34,6 @@ public class DatabaseHandler implements UserAuthentication {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         return result;
     }
 
@@ -54,8 +53,24 @@ public class DatabaseHandler implements UserAuthentication {
         } catch (SQLException e) {
             System.out.println(e.getMessage());  ;
         }
-
         return "Saved successfully";
+    }
+
+    @Override
+    public ResultSet getUserByEmail(String email) {
+
+        ResultSet result = null;
+        String query = String.format("SELECT * FROM  %s WHERE %s = ?",Const.USER_TABLE,Const.USER_EMAIL);
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1,email);
+            result = ps.executeQuery();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
     }
 
 }

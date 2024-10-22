@@ -34,6 +34,8 @@ public class HomeController {
     @FXML
     private ImageView tdLogo;
 
+
+
     @FXML
     void initialize() {
 
@@ -54,12 +56,11 @@ public class HomeController {
 
     }
 
-    // TODO: refactor this method to a static helper method
-    public void SetScreen(JFXButton jfxButton, String url, String title) {
+    public  static void SetScreen(JFXButton jfxButton, String url, String title) {
         jfxButton.setOnAction(event -> {
             jfxButton.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource(url));
+            fxmlLoader.setLocation(HomeController.class.getResource(url));
 
             try {
                 fxmlLoader.load();

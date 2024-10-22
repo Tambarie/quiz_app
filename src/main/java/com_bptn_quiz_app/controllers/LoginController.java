@@ -108,7 +108,6 @@ public class LoginController {
                 counter++;
             }
             if (counter != 1) {
-                // TODO send an error message to the user
                 incorrectEmailOrPassword.setVisible(true);
                 return;
             }

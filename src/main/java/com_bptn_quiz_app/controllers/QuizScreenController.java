@@ -13,6 +13,7 @@ import com_bptn_quiz_app.models.Score;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import org.jetbrains.annotations.NotNull;
 
@@ -66,6 +67,14 @@ public class QuizScreenController {
     @FXML
     private JFXButton startNewQuiz;
 
+    @FXML
+    private Label questionTag;
+
+    @FXML
+    private ImageView logo;
+
+
+
 
 // TODO
     // The question should be set to visible false at the end of the quiz
@@ -74,23 +83,9 @@ public class QuizScreenController {
 
     @FXML
     void initialize() {
-        correctAnswers.setText("0");
         int counter = 1;
-
-
-
-        a.setSelectedColor(Color.LIGHTGREEN);
-        b.setSelectedColor(Color.LIGHTGREEN);
-        c.setSelectedColor(Color.LIGHTGREEN);
-        d.setSelectedColor(Color.LIGHTGREEN);
-
-        ToggleGroup group = new ToggleGroup();
-        a.setToggleGroup(group);
-        b.setToggleGroup(group);
-        c.setToggleGroup(group);
-        d.setToggleGroup(group);
-
-
+        initialScreenMount();
+        setQuestion(counter);
         nextQuestion.setOnAction(event -> {
             a.setSelected(false);
             b.setSelected(false);
@@ -98,7 +93,7 @@ public class QuizScreenController {
             d.setSelected(false);
 
             int number = Integer.parseInt(questionNumber.getText().trim());
-            setNextQuestion(number + counter);
+            setQuestion(number + counter);
             a.setDisable(false);
             b.setDisable(false);
             c.setDisable(false);
@@ -127,6 +122,33 @@ public class QuizScreenController {
             checkResult.setDisable(true);
         });
 
+        startNewQuiz.setOnAction(event -> {
+            HomeController.SetScreen(startNewQuiz,"/com_bptn_quiz_app/quiz_screen.fxml","Quiz App");
+        });
+
+        logout.setOnAction(event -> {
+            HomeController.SetScreen(logout,"/com_bptn_quiz_app/home.fxml","Quiz App");
+        });
+    }
+
+    private void initialScreenMount() {
+        correctAnswers.setText("0");
+
+        quizEnded.setVisible(false);
+        logout.setVisible(false);
+        startNewQuiz.setVisible(false);
+        scoreText.setVisible(false);
+
+        a.setSelectedColor(Color.LIGHTGREEN);
+        b.setSelectedColor(Color.LIGHTGREEN);
+        c.setSelectedColor(Color.LIGHTGREEN);
+        d.setSelectedColor(Color.LIGHTGREEN);
+
+        ToggleGroup group = new ToggleGroup();
+        a.setToggleGroup(group);
+        b.setToggleGroup(group);
+        c.setToggleGroup(group);
+        d.setToggleGroup(group);
     }
 
 
@@ -148,6 +170,9 @@ public class QuizScreenController {
         questionNumber.setVisible(false);
         scoreText.setVisible(true);
         quizEnded.setVisible(true);
+        logout.setVisible(true);
+        startNewQuiz.setVisible(true);
+        questionTag.setVisible(false);
 
         //  Saves user score to JSON
         saveUserScore(totalScore);
@@ -206,7 +231,7 @@ public class QuizScreenController {
     }
 
 
-    private void setNextQuestion( int counter) {
+    private void setQuestion(int counter) {
         JsonDeserializer questions = getJsonDesirialiser();
         Questions jQuestions = questions.deserializes();
         JavaQuestion javaQuestionBatch = getRandomQuestion(jQuestions);

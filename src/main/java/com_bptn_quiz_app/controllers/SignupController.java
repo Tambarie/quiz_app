@@ -3,6 +3,7 @@ package com_bptn_quiz_app.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -65,26 +66,25 @@ public class SignupController  {
     private Label fillAllFieldsError;
 
     @FXML
+    private Label userAlreadyExists;
+
+    @FXML
     void onKey(KeyEvent event) {
 
     }
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
-
-        enterValidPasswordError.setVisible(false);
-        passwordLengthError.setVisible(false);
-        passwordMismatchError.setVisible(false);
-        fillAllFieldsError.setVisible(false);
+        initializeScreen();
 
         signUpButton.setOnAction(event -> {
-
             String userEmail = email.getText().trim();
             String userFirstName = firstName.getText().trim();
             String userLastName = lastName.getText().trim();
             String userPassword = password.getText().trim();
             String userConfirmPassword = confirmPassword.getText().trim();
 
+            // Validate user inputs
             if (userEmail.isEmpty() || userFirstName.isEmpty() || userLastName.isEmpty() || userPassword.isEmpty()) {
                 fillAllFieldsError.setVisible(true);
                 return;
@@ -105,10 +105,10 @@ public class SignupController  {
                 return;
             }
 
-            // TODO check if user exists
-
+            // Instantiate the user Object
             User user = new User( userFirstName, userLastName,userEmail, userPassword);
 
+            // invoke database handler
             UserAuthentication userAuthentication = null;
             try {
                 userAuthentication = new DatabaseHandler();
@@ -116,7 +116,24 @@ public class SignupController  {
                 throw new RuntimeException(e);
             }
 
+            // check if user email already exists in the database
+            ResultSet userRow = userAuthentication.getUserByEmail(userEmail);
+            int counter = 0;
+            while (true){
+                try {
+                    if (!userRow.next()) break;
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                counter++;
+            }
+            // check if user counter is 1
+            if (counter == 1) {
+                userAlreadyExists.setVisible(true);
+                return;
+            }
 
+            // Signup user
             try {
                 String message = userAuthentication.signUpUser(user.getEmail(), user.getPassword(), user.getFirstName(), user.getLastName());
                 System.out.println(message);
@@ -127,6 +144,8 @@ public class SignupController  {
                 throw new RuntimeException(e);
             }
 
+
+            // Navigate user to login page
                 signUpButton.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com_bptn_quiz_app/login.fxml"));
@@ -144,12 +163,21 @@ public class SignupController  {
                 stage.showAndWait();
             });
 
+        // Navigate user to home page
             HomeController homeController = new HomeController();
             homeController.SetScreen(homeButton, "/com_bptn_quiz_app/home.fxml","Quiz App");
 
     }
 
 
+    //Initialize default signup screen
+    private void initializeScreen() {
+        enterValidPasswordError.setVisible(false);
+        passwordLengthError.setVisible(false);
+        passwordMismatchError.setVisible(false);
+        fillAllFieldsError.setVisible(false);
+        userAlreadyExists.setVisible(false);
+    }
 
 
 }

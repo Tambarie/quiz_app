@@ -16,7 +16,7 @@
          <children>
             <AnchorPane layoutY="3.0" prefHeight="42.0" prefWidth="700.0" style="-fx-background-color: #f2fde4;">
                <children>
-                  <ImageView fitHeight="37.0" fitWidth="43.0" layoutX="41.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="logo" fitHeight="37.0" fitWidth="43.0" layoutX="41.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@td-logo-en.png" />
                      </image>
@@ -25,7 +25,7 @@
                   <JFXButton fx:id="logout" layoutX="520.0" layoutY="10.0" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #008b00;" text="Log out" textFill="WHITE" />
                </children></AnchorPane>
          </children></AnchorPane>
-      <AnchorPane blendMode="SRC_ATOP" layoutX="63.0" layoutY="74.0" prefHeight="317.0" prefWidth="574.0" style="-fx-background-color: #008b00;">
+      <AnchorPane blendMode="SRC_ATOP" layoutX="63.0" layoutY="56.0" prefHeight="343.0" prefWidth="574.0" style="-fx-background-color: #008b00;">
          <children>
             <Label fx:id="question" centerShape="false" contentDisplay="CENTER" layoutX="32.0" layoutY="32.0" prefHeight="80.0" prefWidth="528.0" text="Which of the following is not a Java keyword?" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
                <opaqueInsets>
@@ -39,8 +39,8 @@
             <JFXRadioButton fx:id="b" layoutX="53.0" layoutY="172.0" text="try" textFill="WHITE" />
             <JFXRadioButton fx:id="c" layoutX="53.0" layoutY="207.0" text="if" textFill="WHITE" />
             <JFXRadioButton fx:id="d" layoutX="53.0" layoutY="241.0" text="then" textFill="WHITE" />
-            <JFXButton fx:id="checkResult" layoutX="48.0" layoutY="277.0" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: F8FFDB;" text="Check It!" />
-            <JFXButton fx:id="nextQuestion" layoutX="454.0" layoutY="277.0" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: F8FFDB;" text="Next Question" />
+            <JFXButton fx:id="checkResult" layoutX="41.0" layoutY="303.0" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: F8FFDB;" text="Check It!" />
+            <JFXButton fx:id="nextQuestion" layoutX="455.0" layoutY="303.0" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: F8FFDB;" text="Next Question" />
             <Label fx:id="questionNumber" layoutX="64.0" layoutY="6.0" text="1" textFill="WHITE" />
             <Label fx:id="scoreText" layoutX="177.0" layoutY="77.0" prefHeight="69.0" prefWidth="223.0" text="Your score is 100%" textFill="WHITE">
                <font>
@@ -49,7 +49,7 @@
             </Label>
             <JFXButton fx:id="submit" layoutX="244.0" layoutY="277.0" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: F8FFDB;" text="Submit" visible="false" />
             <Label fx:id="correctAnswers" layoutX="512.0" layoutY="23.0" text="1" textFill="WHITE" visible="false" />
-            <Label layoutX="7.0" layoutY="6.0" text="Question" textFill="WHITE" />
+            <Label fx:id="questionTag" layoutX="7.0" layoutY="6.0" text="Question" textFill="WHITE" />
             <Label fx:id="quizEnded" layoutX="223.0" layoutY="138.0" prefHeight="69.0" prefWidth="139.0" text="Quiz Ended" textFill="WHITE">
                <font>
                   <Font size="23.0" />
