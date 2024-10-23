@@ -13,7 +13,6 @@ import com_bptn_quiz_app.models.Score;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import org.jetbrains.annotations.NotNull;
 
@@ -69,16 +68,6 @@ public class QuizScreenController {
 
     @FXML
     private Label questionTag;
-
-    @FXML
-    private ImageView logo;
-
-
-
-
-// TODO
-    // The question should be set to visible false at the end of the quiz
-    // The endquiz and logout button should only be visible at the end of the quiz
 
 
     @FXML

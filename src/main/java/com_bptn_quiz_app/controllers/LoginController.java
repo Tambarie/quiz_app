@@ -16,7 +16,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -25,8 +24,6 @@ public class LoginController {
     @FXML
     private ResourceBundle resources;
 
-    @FXML
-    private URL location;
 
     @FXML
     private TextField enterEmailField;
@@ -48,12 +45,6 @@ public class LoginController {
 
     @FXML
     private Label emptyFieldsError;
-
-    @FXML
-    private ImageView emailPic;
-
-    @FXML
-    private ImageView passwordPics;
 
     @FXML
     void
@@ -86,8 +77,6 @@ public class LoginController {
                emptyFieldsError.setVisible(true);
                 return;
             }
-
-
 
 
             UserAuthentication userAuthentication = null;
