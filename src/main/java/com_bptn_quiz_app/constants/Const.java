@@ -17,4 +17,7 @@ public class Const {
     public static final String USER_SCORE_ID = "user_id";
     public static final String SCORES = "scores";
 
+    //  EMAIL SETUP
+    public static final String USERNAME = "";
+    public static final String PASSWORD = "";
 }

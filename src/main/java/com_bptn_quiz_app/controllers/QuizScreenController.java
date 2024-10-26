@@ -254,7 +254,6 @@ public class QuizScreenController {
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
-
         };
     }
 

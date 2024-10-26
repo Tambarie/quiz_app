@@ -14,6 +14,7 @@ module com.advaned_java.com_bptn_quiz_app {
     requires annotations;
     requires com.jfoenix;
     requires com.google.gson;
+    requires org.apache.commons.mail;
 
 
     opens com_bptn_quiz_app to javafx.fxml;

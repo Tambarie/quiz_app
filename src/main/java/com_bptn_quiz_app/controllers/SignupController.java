@@ -9,7 +9,9 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com_bptn_quiz_app.database.DatabaseHandler;
+import com_bptn_quiz_app.interfaces.Emails;
 import com_bptn_quiz_app.interfaces.UserAuthentication;
+import com_bptn_quiz_app.libraries.EmailServer;
 import com_bptn_quiz_app.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import org.apache.commons.mail.EmailException;
 
 public class SignupController  {
 
@@ -133,6 +136,9 @@ public class SignupController  {
                 return;
             }
 
+
+
+
             // Signup user
             try {
                 String message = userAuthentication.signUpUser(user.getEmail(), user.getPassword(), user.getFirstName(), user.getLastName());
@@ -142,6 +148,17 @@ public class SignupController  {
                 throw new RuntimeException(e);
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
+            }
+
+            String signUpMesssage = String.format("Hello %s , welcome to TD Quiz App", userFirstName);
+
+            Emails emails = new EmailServer();
+
+            try {
+                var notifier = emails.SendEmail(userEmail,signUpMesssage);
+                System.out.println(notifier);
+            } catch (EmailException e) {
+                e.printStackTrace();
             }
 
 
