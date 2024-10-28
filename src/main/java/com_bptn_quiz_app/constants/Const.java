@@ -16,4 +16,7 @@ public class Const {
     //  EMAIL SETUP
     public static final String USERNAME = "";
     public static final String PASSWORD = "";
+
+
+    public static final int NUMBER_OF_QUESTIONS = 5;
 }

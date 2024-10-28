@@ -99,7 +99,7 @@ public class LoginController {
                 return;
             }
 
-            loginButton.getScene().getWindow();
+            loginButton.getScene().getWindow().hide();
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/com_bptn_quiz_app/quiz_screen.fxml"));
 

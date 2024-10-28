@@ -50,7 +50,7 @@ public class HomeController {
 
     public  static void SetScreen(JFXButton jfxButton, String url, String title) {
         jfxButton.setOnAction(event -> {
-            jfxButton.getScene().getWindow();
+            jfxButton.getScene().getWindow().hide();
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(HomeController.class.getResource(url));
 
@@ -64,8 +64,7 @@ public class HomeController {
             Stage stage = new Stage();
             stage.setTitle(title);
             stage.setScene(new Scene(root));
-            stage.showAndWait();
-
+            stage.show();
         });
     }
 

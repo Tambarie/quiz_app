@@ -146,6 +146,17 @@
         </dependency>
 
 
+
+        <!-- https://mvnrepository.com/artifact/org.jukito/jukito-parent -->
+        <dependency>
+            <groupId>org.jukito</groupId>
+            <artifactId>jukito-parent</artifactId>
+            <version>1.5</version>
+            <type>pom</type>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>

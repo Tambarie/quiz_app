@@ -2,6 +2,7 @@ package com_bptn_quiz_app.controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com_bptn_quiz_app.constants.Const;
 import com_bptn_quiz_app.interfaces.JsonDeserializer;
 import com_bptn_quiz_app.interfaces.JsonSirialiser;
 import com_bptn_quiz_app.models.JavaQuestion;
@@ -11,9 +12,13 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import com_bptn_quiz_app.models.Score;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.FileNotFoundException;
@@ -95,7 +100,7 @@ public class QuizScreenController {
             d.setSelectedColor(Color.LIGHTGREEN);
 
             int quizNumber = Integer.parseInt(questionNumber.getText().trim());
-            if (quizNumber > 2) {
+            if (quizNumber > Const.NUMBER_OF_QUESTIONS) {
                 endQuizScene();
             }
         });
@@ -112,11 +117,11 @@ public class QuizScreenController {
         });
 
         startNewQuiz.setOnAction(event -> {
-            HomeController.SetScreen(startNewQuiz,"/com_bptn_quiz_app/quiz_screen.fxml","Quiz App");
+            SetScreen(startNewQuiz,"/com_bptn_quiz_app/quiz_screen.fxml","Quiz App");
         });
 
         logout.setOnAction(event -> {
-            HomeController.SetScreen(logout,"/com_bptn_quiz_app/home.fxml","Quiz App");
+            SetScreen(logout,"/com_bptn_quiz_app/home.fxml","Quiz App");
         });
     }
 
@@ -270,6 +275,26 @@ public class QuizScreenController {
             }
         };
         saveScoreToJSon.serializes(new Score(userSores,"user"));
+    }
+
+    public  static void SetScreen(JFXButton jfxButton, String url, String title) {
+        jfxButton.setOnAction(event -> {
+            jfxButton.getScene().getWindow().hide();
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(HomeController.class.getResource(url));
+
+            try {
+                fxmlLoader.load();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
+            Parent root = fxmlLoader.getRoot();
+            Stage stage = new Stage();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
     }
 }
 
